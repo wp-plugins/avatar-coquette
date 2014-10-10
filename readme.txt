@@ -1,0 +1,63 @@
+﻿=== Plugin Name ===
+
+Contributors: iLenStudio
+Plugin Name: Avatar Coquette
+Plugin URI: 
+Tags: Change avatar Wordpress, Change my avatar in wordpress, avartar custom in wordpress, comment change avartar plugin, custom avatar wordpress, plugin comments, wordpress new avatar, wordpress plugin,seo,comments,addon comments
+Author URI: 
+Author: iLen
+Requires at least: 3.0
+Tested up to: 3.9
+Stable tag: 1.1
+Version: 1.2
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Change avatar sad wordpress by other coquette
+
+== Description ==
+With <strong>Avatar Coquette</strong> you can replace the default avatar sad wordpress for a flirty new avatars. 
+Because you can choose <i>2 criteria</i> for the same show. <br />
+<ul>
+    <li>By first letter of name comment</li>
+    <li>For the last name of the comment letter</li>
+</ul>
+With these criterior avatar plugin know that putting on the image of the commenters and do not have avatar. 
+If a person has a gravatar.com account and the plugin will respect this and will put avatar. 
+<br />
+Also each page editor can get your own avartar and can climb on the option 'User -> You Profile -> Additional User Image (Avatar Coquette)'. 
+<br /><br />
+
+<h4>The plugin has the following options:</h4>
+<ul>
+<li><strong>Enable / Disable:</strong> Enable / Disable the "Coquette Avatar" plugin</li> 
+<li><strong>Avatar default:</strong> Select default avatar. </li> 
+<li><strong>Criteria:</strong> Select the criterion by Which new avatars will be displayed, This parameter defaults Determines the show avatars in comments, for example: If you choose the first criterion. With this show avatars Depending on the first letter of his name, That is, if a name starts with 'John' the 'J' is the first letter in alphabetical and number is the number '10' then show the cool avatar '10.png' With This May Improve the static of the ugly default avatars having wordpress. </li> 
+<li><strong>Avatar Set:</strong> Select the set of avatar avatar to replace the typical wordpress.</li> 
+</ul>
+<blockquote>
+<p>Tested on Real Host, not on localhost</p>
+</blockquote>
+ 
+ 
+== Installation ==
+
+= From your WordPress dashboard =
+
+1. Visit 'Plugins > Add New'
+2. Search for 'Avatar Coquette'
+3. Activate 'Avatar Coquette' from your Plugins page.
+4. Visit 'Setting > 'Avatar Coquette'.
+
+
+== Changelog ==
+= 1.2 =
+* update <code>iLenFramework</code> 1.5
+= 1.1 =
+* update <code>iLenFramework</code> 1.4.4
+= 1.0 =
+* Released
+
+
+== Screenshots ==
+1. WP Admin options
