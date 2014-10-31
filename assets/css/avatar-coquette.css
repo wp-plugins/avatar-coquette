@@ -1,0 +1,21 @@
+div.c img { }
+div.c .avatar_preview_admin{
+    display: block;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+div.c .avatar_preview_admin img{
+    position: relative;
+}
+div.c .avatar_preview_admin span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FFF;
+    color: #333;
+    padding: 0px 5px;
+}
