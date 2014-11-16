@@ -32,7 +32,7 @@ class avatar_coquette_make{
                      'name_option'    =>'avatar_coquette',
                      'name_plugin_url'=>'avatar-coquette',
                      'descripcion'    =>'Change avatar sad wordpress by other coquette',
-                     'version'        =>'1.6',
+                     'version'        =>'1.7',
                      'url'            =>'',
                      'logo'           =>'<i class="fa fa-user text-long" style="padding:15px 18px;"></i>',
                      'logo_text'      =>'', // alt of image

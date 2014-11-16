@@ -25,21 +25,7 @@ class ilenframework_component_enhancing_code{
 
 
 	function display( $id_name , $value){	?>
-		<div style="padding: 29px 1px;background:url('<?php echo $this->IF_CONFIG->parameter['url_framework']; ?>/assets/images/chrome-frame.png') no-repeat;">
-			<textarea id="code_<?php echo $id_name; ?>" name="<?php echo $id_name; ?>"><?php echo $value; ?></textarea>
-		</div>
-		<script>
-		  jQuery(document).ready(function(){
-		  	var editor = CodeMirror.fromTextArea(document.getElementById("code_<?php echo $id_name; ?>"), {
-		  		lineNumbers: true,
-    			styleActiveLine: true,
-    			matchBrackets: true
-    		});
-
-    		editor.setOption("theme", "ambiance");
-		  });
-	      
-	    </script>
+		
 	    <style>
 	    	/*.CodeMirror {
 				background: #f8f8f8;

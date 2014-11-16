@@ -454,8 +454,10 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .ilenplugin-options .select-wrapper select{
-  padding: 2px!important;
+  padding: 0px 5px!important;
   width: 100%!important;
+  line-height: 26px;
+  height: 26px!important;
 }
 .ilenplugin-options #tabs{
   background: #fff;
@@ -490,7 +492,12 @@ input[type="range"]::-webkit-slider-thumb {
   font-size: 13px;
   text-align: center;
 }
-
+.ilenplugin-options #tabs > ul li a{
+  color: #AFB4B5;
+}
+.ilenplugin-options #tabs > ul li.ui-tabs-active a{
+  color: #444;
+}
 
 
 
@@ -845,7 +852,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .ilentheme-options footer{
-  height: 90px;
+  height: 75px;
   clear: both;
   float: left;
   padding: 20px;
@@ -898,6 +905,28 @@ input[type="range"]::-webkit-slider-thumb {
 .ilentheme-options .row.upload .preview img{
   max-width: 100%;
 }
+.ilentheme-options .background_complete .noUi-background ,.ilentheme-options .background_complete .noUi-origin{
+  background: #FAFAFA;
+  box-shadow: inset 0 1px 1px #f0f0f0;
+}
+.ilentheme-options .background_complete  .noUi-connect {
+  background: #7F8C9A;
+  box-shadow: inset 0 0 3px rgba(51,51,51,.45);
+  -webkit-transition: background 450ms;
+  transition: background 450ms;
+}
+ 
+.ilentheme-options .upload_image_button_complete {
+  font-size: 14px;
+  height: 34px;
+  padding: 3px 10px 1px;
+
+  width: 177px;
+  text-align: center;
+}
+.ilentheme-options .upload_image_button_complete i {
+  margin-right: 5px;
+}
 
 
 .ilentheme-options input[type="text"],
@@ -923,6 +952,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .ilentheme-options .row .b select{
   padding: 3px;
+  height: 26px;
+  line-height: 24px;
 }
 .ilentheme-options .row:last-child{
   border-bottom: 0;
@@ -1105,8 +1136,8 @@ input[type="range"]::-webkit-slider-thumb {
 .ilentheme-options .row_checkbox_normal .help{
   padding: 0px 0 6px 0!important;
 }
-.ilentheme-options .ilentheme_row_range .help{
-  padding-top: 5px;
+.ilentheme-options .ilentheme_row_range .help,.ilentheme-options .ilentheme_row_range2 .help{
+  padding-top: 14px;
 }
 .ilentheme_row_checkbox .a h3{
   line-height: 22px;
@@ -1145,6 +1176,12 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .ilentheme-options .upload_image_button{
   font-weight: normal!important;
+}
+.ilentheme-options .ilentheme_row_select2{
+  width: 100%;
+}
+.ilentheme-options .ilentheme_row_select2 .help{
+  margin-top: 10px;
 }
 .ilentheme-options .ilentheme_row_select .help{
   padding: 0 0 8px;
@@ -1190,7 +1227,7 @@ input[type="range"]::-webkit-slider-thumb {
   top: 6px;
 }
 .ilentheme-options .select-wrapper {
-  width: 90%;
+  width: 100%;
   position: relative;
   z-index: 0;
   display: inline-block;
@@ -1318,6 +1355,38 @@ input[type="range"]::-webkit-slider-thumb {
   border: 0px dashed #777;
   box-sizing: border-box;
   margin-top: 0px;
+}
+.ilentheme-options .row.upload .button{
+  height: 34px;
+  margin-top: -5px;
+  font-size: 14px;
+  line-height: 33px;
+}
+.ilentheme-options .row.upload .button i{
+  margin-right: 5px;
+}
+
+.ilentheme-options .row.upload2 .button{
+  height: 34px;
+  margin-top: -5px;
+  font-size: 18px;
+  line-height: 33px;
+}
+.ilentheme-options .row.upload2 .button i{
+  margin-right: 0px;
+}
+
+
+.ilentheme-options .noUi-background, 
+.ilentheme-options .noUi-origin {
+  background: #FAFAFA;
+  box-shadow: inset 0 1px 1px #f0f0f0;
+}
+.ilentheme-options .noUi-connect {
+  background: #7F8C9A;
+  box-shadow: inset 0 0 3px rgba(51,51,51,.45);
+  -webkit-transition: background 450ms;
+  transition: background 450ms;
 }
 
 

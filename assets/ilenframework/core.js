@@ -44,6 +44,7 @@ jQuery(document).ready( function() {
     jQuery(".ilentheme-options .btn_save,.ilenplugin-options .btn_save").on("click",function(event){
         event.preventDefault();
         jQuery( this ).find("i").addClass("spinInfinite");
+        ilenvalidatorsubmit();
         document.frmsave.submit();
     });
  
@@ -91,8 +92,9 @@ jQuery(document).ready( function() {
 
 	});
 
-    jQuery('.ilenplugin-options .upload_image_default').on('click',function(){
-        $(this).prev().prev().val( $(this).attr("image-default") );
+    jQuery('.ilenplugin-options .upload_image_default,.ilentheme-options .upload_image_default').on('click',function(){
+        jQuery(this).prev().prev().val( jQuery(this).attr("image-default") );
+        jQuery(this).parent().find(".preview").html("<img src='"+jQuery(this).attr("image-default")+"' /><span class='admin_delete_image_upload'>✕</span>");
     });
 
     // end upload >3.5
@@ -297,6 +299,53 @@ jQuery(document).ready( function() {
         //alert(id);
         return false;
     });*/
+
+
+
+    function ilenvalidatorsubmit(){
+        var $ = jQuery;
+
+
+
+        // validate Select2 Multiple
+        var myselect2_before = $("._select2_mulpliple");
+        var myselect2 = myselect2_before.next();
+        if( myselect2_before.length ){
+
+            /** 
+            * @link http://jsfiddle.net/DYpU8/4/
+            **/
+            $( myselect2_before ).each(function() {
+                var newselect2 = $(this).next();
+                var select2parent = $(this).parent();
+                // 'data' brings the unordered list, while val does not
+                var data = newselect2.select2('data');
+                
+                // Push each item into an array
+                var finalResult = [];
+                for( item in newselect2.select2('data') ) {
+                    finalResult.push(data[item].id);
+                };
+                
+                // Display the result with a comma
+                $(this).parent().find('._input_hidden_select2').val( finalResult.join(',') );
+
+            });
+
+        }
+
+    }
          
 
 });
+
+
+// link: http://jsfiddle.net/67XDq/7/
+function IF_textCounter(field, cnt, maxlimit) {         
+    var cntfield = document.getElementById(cnt) 
+     if (field.value.length > maxlimit) // if too long...trim it!
+        field.value = field.value.substring(0, maxlimit);
+        // otherwise, update 'characters left' counter
+        else
+        cntfield.value = maxlimit - field.value.length;
+}

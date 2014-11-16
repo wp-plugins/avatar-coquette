@@ -156,6 +156,7 @@ Author URI: http://ilentheme.com
 .ilentheme-options select:focus,.ilentheme-options textarea:focus{
   background:#f2f2f2;  
 }
+
 .ilentheme-options .row .b input[type="text"],.ilentheme-options .row .b  input[type="password"],
 .ilentheme-options .row .b  select,.ilentheme-options .row .b  textarea{
   margin-top: -5px;
@@ -193,9 +194,11 @@ Author URI: http://ilentheme.com
 
 /* =Rows / per / options */
 .ilentheme-options .row{
-  overflow: hidden;
   border-bottom: 1px solid rgb(241, 241, 241);
   padding: 20px 0;
+  float: left;
+  clear: both;
+  display: block;
 }
 .ilentheme-options .row .a{
   width: 45%;
@@ -264,6 +267,9 @@ Author URI: http://ilentheme.com
   /* -webkit-border-radius: 10px; */
   -khtml-border-radius: 10px;
   margin-top: 10px;
+}
+.ilentheme-options .upload2 input[type="text"] {
+  width: 260px;
 }
 
 .ilentheme-options .background_complete .upload .preview{
@@ -696,7 +702,7 @@ Author URI: http://ilentheme.com
   text-overflow: '';
 }
 .ilentheme-options .select-wrapper select {
-  padding: 2px!important;
+  padding: 2px;
   width: 100%!important;
 }
 /* only ie10 */
@@ -1089,6 +1095,35 @@ Author URI: http://ilentheme.com
   box-sizing: border-box;
   margin-top: 0px;
 }
+
+.ilenplugin-options .row_textarea .text_length{
+  font-size: 10px;
+  font-family: 'arial';
+  border: 0;
+  background: #F9F9F9;
+  color: #969696;
+  font-style: italic;
+  width: 35px!important;
+  height: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+
+  bottom: 10px;
+  right: 0;
+  position: absolute;
+
+  border-top-right-radius: 0;
+  -moz-border-top-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+}
+.ilenplugin-options .row_textarea{
+  position: relative;
+}
+.ilenplugin-options .row_textarea textarea{
+  padding: 10px 5px 5px 10px;  
+}
+
+
 
 /* =Divider Options */
 .ilenplugin-options .divide {

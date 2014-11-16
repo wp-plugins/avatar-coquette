@@ -1,13 +1,13 @@
 <?php 
 /**
- * iLenFramework 1.6
+ * iLenFramework 1.6.5
  * @package ilentheme
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_1_6') ) {
+if ( !class_exists('ilen_framework_1_6_5') ) {
 
-class ilen_framework_1_6 {
+class ilen_framework_1_6_5 {
 
 		var $options		   	= array();
 		var $parameter 			= array();
@@ -16,6 +16,7 @@ class ilen_framework_1_6 {
     	var $components         = null;
 
 	function __construct(){
+
 
 		if( ! is_admin() ){ // only front-end
 
@@ -104,9 +105,10 @@ class ilen_framework_1_6 {
 		global $IF_CONFIG;
 
 		$this->IF_CONFIG  = $IF_CONFIG;
+
 		$this->parameter  = isset($IF_CONFIG->parameter)?(array)$IF_CONFIG->parameter:null;
 		$this->options    = isset($IF_CONFIG->options)?(array)$IF_CONFIG->options:null;
-		$this->components = $IF_CONFIG->components;
+		$this->components = isset($IF_CONFIG->components)?$IF_CONFIG->components:null;
 
 
 		self::setComponents();
@@ -471,6 +473,7 @@ class ilen_framework_1_6 {
 				</div>
 				<input type="hidden" name='save_options' value='1' />
 				<input type="hidden" name='name_options' value='<?php echo $this->parameter["name_option"]; ?>' />
+				<input type="hidden" name='if_submit' id='if_submit' value='<?php if( isset($_POST) && $_POST ): ?>1<?php endif; ?>' />
 				</form>
 				<form action="" method="POST" name="frmreset" id="frmreset">
 					<input type="hidden" name='reset_options' value='1' />
@@ -800,9 +803,13 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 									<?php }else { ?>
 										<?php $ck=''; if( isset($options_theme[ $value['name'] ]) ){ $ck =  checked(  $options_theme[ $value['name'] ]  , 1, FALSE );  } ?>
 										<div class="row_checkbox_normal">
-											<input  type="checkbox" <?php echo $ck; ?> name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" value="<?php echo $value['value_check'] ?>"  />
-											<label for="<?php echo $value['id'] ?>"><span class="ui"></span></label>
-											<div class="help"><?php echo $value['help']; ?></div>
+											<div style="width:20%;float:left">
+												<input  type="checkbox" <?php echo $ck; ?> name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" value="<?php echo $value['value_check'] ?>"  />
+												<label for="<?php echo $value['id'] ?>"><span class="ui"></span></label>
+											</div>
+											<div style="width:70%;float:right">
+												<div class="help"><?php echo $value['help']; ?></div>
+											</div>
 										</div>
 									<?php } ?>
 								</div>
@@ -818,10 +825,31 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 							<div class="row upload <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
 								<div class="a"><h3><?php echo $value['title']; ?></h3></div>
 								<div class="<?php echo $side_two; ?>">
-									<input id="<?php echo $value['id'] ?>" type="text" name="<?php echo $value['name'] ?>" value="<?php if(isset($options_theme[ $value['name'] ])) { echo $options_theme[ $value['name'] ]; } ?>" class="theme_src_upload"  />
-									<input type="button" value="<?php _e('Upload Image',$this->parameter['name_option']) ?>" class="upload_image_button" data-title="<?php echo $value['title'] ?>" data-button-set="<?php _e('Select image',$this->parameter['name_option']) ?>" />
+									<input id="<?php echo $value['id'] ?>" type="text" data-title="<?php echo $value['title'] ?>" data-button-set="<?php _e('Select image',$this->parameter['name_option']) ?>" class='theme_src_upload'  />
+									<a class="button upload_image_button" data-title="<?php echo $value['title'] ?>" data-button-set="<?php _e('Select image',$this->parameter['name_option']) ?>" > <i class="fa fa-cloud-upload"></i><?php _e('Set Image',$this->parameter['name_option']) ?></a>
 									<div class="preview">
 										<?php  if( isset($options_theme[ $value['name'] ]) && $options_theme[ $value['name'] ] ) : ?>
+											<img src="<?php echo $options_theme[ $value['name'] ]; ?>" />
+											<span class='admin_delete_image_upload'>✕</span>
+										<?php endif; ?>
+									</div>
+									<div class="help"><?php echo $value['help']; ?></div>
+								</div>
+							</div>
+							<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
+
+						<?php break;
+
+						case "upload2": ?>
+							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
+							<div class="row upload upload2 <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
+								<div class="a"><?php echo $value['title']; ?></div>
+								<div class="<?php echo $side_two; ?>">
+									<input id="<?php echo $value['id'] ?>" type="text" name="<?php echo $value['name'] ?>" value="<?php echo $options_theme[ $value['name'] ]; ?>" class="theme_src_upload"  />
+									<a class="upload_image_button button top-tip" data-tips="<?php _e('Select image',$this->parameter['name_option']) ?>" data-title="<?php echo $value['title'] ?>" data-button-set="<?php _e('Select image',$this->parameter['name_option']) ?>" > <i class="fa fa-cloud-upload"></i><?php _e('',$this->parameter['name_option']) ?></a>
+									<?php if(isset( $value['value'] ) && $value['value']) : ?><a class="upload_image_default button top-tip" data-tips="<?php _e('Default',$this->parameter['name_option']) ?>" image-default="<?php echo $value['value']; ?>" > <i class="fa fa-repeat"></i><?php _e('',$this->parameter['name_option']) ?></a><?php endif; ?>
+									<div class="preview">
+										<?php  if( $options_theme[ $value['name'] ] ) : ?>
 											<img src="<?php echo $options_theme[ $value['name'] ]; ?>" />
 											<span class='admin_delete_image_upload'>✕</span>
 										<?php endif; ?>
@@ -876,6 +904,76 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 										?>
 									</select>
 									</div>
+									<div class="help"><?php echo $value['help']; ?></div>
+								</div> 
+							</div>
+							<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
+
+						<?php break;
+
+
+						case "select2": ?>
+							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
+							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?> ilentheme_row_select2" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
+								<div class="a"><h3><?php echo $value['title']; ?></h3></div>
+								<div class="<?php echo $side_two; ?>">
+									<input type="hidden" name="_select2" id="_select2" class="_select2_mulpliple" />
+									<select name="<?php echo $value['name'] ?>[]" id="<?php echo $value['id'] ?>" <?php if(isset($value['multiple'])) { echo "multiple ='multiple';"; } ?>  >
+										<?php 
+										//var_dump( $options_theme[ $value['name'] ] );
+											if( is_array( $value['items'] ) ){
+												$array_key_items=null;
+												foreach ( $value['items'] as $item_key => $item_value ){
+													$array_key_items[$item_key] = $item_value;
+												}
+											}
+
+											$array_real_orden=null; 
+											if( isset($options_theme[ $value['name'] ]) && is_array($options_theme[ $value['name'] ]) ){
+												foreach ($options_theme[ $value['name'] ]  as $k => $v) {
+													$array_real_orden[$v] = $array_key_items[$v];
+												}
+											}
+
+											if( isset($array_key_items) && is_array($array_key_items) ){
+												foreach ($array_key_items  as $k => $v) {
+													//if( ! in_array($k,$array_real_orden) ){
+													if (!array_key_exists($k, $array_real_orden)) {
+														$array_real_orden[$k] = $v;
+													}
+												}
+											}
+
+											if( isset($array_real_orden) && is_array($array_real_orden) ){
+												$data = null;
+												foreach ($array_real_orden as $k => $v): ?>
+													<?php if( in_array( $k , $options_theme[ $value['name'] ]  ) ) { $selected="selected='selected'";  }else{ $selected = ''; } ?>
+													<option value="<?php echo $k ?>" <?php echo $selected; ?>><?php echo $v ?></option>	
+												<?php endforeach; 
+											}
+
+
+										?>
+									</select>
+									<input type="hidden" name="<?php echo $value['name'] ?>_input_hidden" id="<?php echo $value['id'] ?>_input_hidden" class="_input_hidden_select2" />
+									<script>
+									// constructor for validator
+									jQuery(window).scrollTop(0);
+									jQuery(document).ready(function( $ ){
+ 
+										//alert("<?php //echo "[".implode(',',$data)."]";  ?>");
+
+										// Object-oriented flavor, example for jQuery plugin
+										
+										$("#<?php echo $value['id'] ?>").select2({
+										    placeholder: "<?php _e('Select order metas',$this->parameter['name_option']) ?>",
+										    allowClear: false,
+										    width:'100%'
+											<?php if(isset( $value['limit'] )){ echo ",maximumSelectionSize: {$value['limit']}";} ?>
+										});
+								 
+									});
+									</script>
 									<div class="help"><?php echo $value['help']; ?></div>
 								</div> 
 							</div>
@@ -985,7 +1083,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 
 							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
 							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?>>
-								<div class="a"><?php if( isset( $value['html1'] ) ) { echo htmlentities($value['html1']); } ?></div>
+								<?php if( isset( $value['html1'] ) && $value['html1'] ) : ?><div class="a"><?php echo htmlentities($value['html1']);  ?></div><?php endif; ?>
 								<div class="<?php echo $side_two; ?>">
 									<?php if( isset( $value['html2'] ) ) { echo ($value['html2']); } ?>
 								</div>
@@ -994,7 +1092,6 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 							<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
 
 						<?php break;
-
 
 						case "tinymce": ?>
 
@@ -1023,14 +1120,15 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 								<div class="<?php echo $side_two; ?>">
 
 									<?php 
-									$bg_complete = '';
-									$bg_complete['color'] = '';
+									$bg_complete                = '';
+									$bg_complete['color']       = '';
 									$bg_complete['transparent'] = '';
-									$bg_complete['repeat']= '';
-									$bg_complete['size']= '';
-									$bg_complete['attachment']= '';
-									$bg_complete['position']= '';
-									$bg_complete['src']= '';
+									$bg_complete['repeat']      = '';
+									$bg_complete['size']        = '';
+									$bg_complete['attachment']  = '';
+									$bg_complete['position']    = '';
+									$bg_complete['src']         = '';
+									$bg_complete['opacity']     = '100';
 									if( isset( $options_theme[ $value['name'] ]) && $options_theme[ $value['name'] ]){ $bg_complete = $options_theme[ $value['name'] ]; } ?>
 									<div>
 									  <input type="text" class="theme_color_picker" value="<?php echo $bg_complete['color'] ?>" name="<?php echo $value['name']; ?>_color" id="<?php echo $value['id'] ?>_color" data-default-color="<?php echo $bg_complete['color']; ?>" />
@@ -1072,6 +1170,36 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 											<option value="right center" <?php selected(  $bg_complete['position'], 'right center'); ?>><?php _e('Right center',$this->parameter['name_option']) ?></option>
 											<option value="right bottom" <?php selected(  $bg_complete['position'], 'right bottom'); ?>><?php _e('Right bottom',$this->parameter['name_option']) ?></option>
 										</select>
+										<div style="margin: 15px 0;float: left;display: block;width: 100%;">
+											<div style="width: 45%;float: left;padding: 0 2%;margin-left: -8px;margin-right: 17px;">
+												<div id="<?php echo $value['id'] ?>-range" class="noUi-connect"></div>	
+											</div>
+											<div style="width:27%;float:left">
+												Opacity
+												<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;"></span>
+											</div>
+											<input type="hidden" name="<?php echo $value['name'] ?>_opacity" id="<?php echo $value['id'] ?>_opacity" value="<?php if(isset( $options_theme[ $value['name'] ] )){ echo (int)$options_theme[ $value['name'] ]; }else{ echo 100; } ?>" />
+											<script>
+											jQuery(document).ready(function($){
+												$('#<?php echo $value['id'] ?>-range').noUiSlider({
+													start: [ <?php if(isset( $bg_complete['opacity'] )){ echo (int)$bg_complete['opacity']; }else{ echo 100; } ?> ],
+													step: 1,
+													range: {
+														'min': [  1 ],
+														'max': [ 100 ]
+													}
+												});
+												$('#<?php echo $value['id'] ?>-range').Link().to( $('#<?php echo $value['id'] ?>-value'), null, wNumb({decimals: 0}) );
+												$('#<?php echo $value['id'] ?>-range').Link().to( $('#<?php echo $value['id'] ?>_opacity'), null, wNumb({decimals: 0}) );
+												$('#<?php echo $value['id'] ?>-range').Link().to(function( value ){
+													var opacity_preview = parseInt(value) / 100;
+													$("#<?php echo $value['id'] ?>_opacity").parent().parent().parent().parent().find(".preview").css("opacity", opacity_preview );
+												});
+												 
+											});
+											
+											</script>
+										</div>
 									</div>
 									
 										<script>
@@ -1087,7 +1215,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 								<div class="c">
 									<div style="padding: 10px 0;;" class="upload">
 										<input id="<?php echo $value['id'] ?>_src" type="text" name="<?php echo $value['name'] ?>_src" value="<?php echo $bg_complete['src']; ?>" class="theme_src_upload"  />
-										<input type="button" value="<?php _e('Upload Image',$this->parameter['name_option']) ?>" class="upload_image_button_complete" data-title="<?php echo $value['title'] ?>" data-button-set="<?php _e('Select image',$this->parameter['name_option']) ?>" />
+										<a class="upload_image_button_complete button top-tip"  data-button-set="<?php _e('Select image',$this->parameter['name_option']) ?>" > <i class="fa fa-cloud-upload"></i><?php _e('Upload image',$this->parameter['name_option']) ?></a>
 
 										<?php 
 											// get data background
@@ -1199,15 +1327,15 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 
 						case "range2": ?>
 							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
-							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?> ilentheme_row_range" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
+							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?> ilentheme_row_range2" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
 								<div class="a"><h3><?php if(isset( $value['title'] )){ echo $value['title']; } ?></h3></div>
 								<div class="<?php echo $side_two; ?>">
 									<div>
 										<div style="width:10%;float:left">
 											<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;"></span>
 										</div>
-										<div style="width:84%;float:right;padding:0 2%;">
-											<div id="<?php echo $value['id'] ?>-range"></div>	
+										<div style="width: 84%;float: right;padding: 0;border-radius: 5px;" >
+											<div id="<?php echo $value['id'] ?>-range" <?php if( isset($value['color']) && $value['color'] == 1 ){ echo "class='noUi-connect'"; } ?>></div>	
 										</div>
 										<input type="hidden" name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" value="<?php if(isset( $options_theme[ $value['name'] ] )){ echo (int)$options_theme[ $value['name'] ]; }else{ echo 0; } ?>" />
 										<script>
@@ -1357,12 +1485,28 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 								<div class="<?php echo $side_two; ?> component_enhancing_css">
 
 									<?php 
-										global $IF_COMPONENT;
-
-										$IF_COMPONENT['component_enhancing_code']->display( $value['id'], $options_theme[ $value['name'] ] );
-
+										//global $IF_COMPONENT;
+										//$IF_COMPONENT['component_enhancing_code']->display( $value['id'], isset($options_theme[ $value['name'] ])?$options_theme[ $value['name'] ]:'' );
 									?>
-									
+									<div style="margin: 10px 0px;border:1px solid #DEDEDE">
+										<textarea id="code_<?php echo $value['id'] ?>" name="<?php echo $value['name'] ?>"><?php echo isset($options_theme[ $value['name'] ])?$options_theme[ $value['name'] ]:$value['value']; ?></textarea>
+									</div>
+									<script>
+
+									  jQuery(document).ready(function(){
+									  	var editor_<?php echo $value['id'] ?> = CodeMirror.fromTextArea(document.getElementById("code_<?php echo $value['id'] ?>"), {
+									  		lineNumbers: true,
+							    			styleActiveLine: true,
+							    			matchBrackets: true
+							    	   });
+							    		editor_<?php echo $value['id'] ?>.setOption("theme", "xq-light");
+
+							    		<?php if( isset($value['mini_callback'])  && $value['mini_callback'] ): ?>
+							    			<?php echo $value['mini_callback']; ?>
+							    		<?php endif; ?>
+									  });
+								      
+								    </script>
 								</div>
 							</div>
 							<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
@@ -1498,10 +1642,13 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 						case "textarea": ?>
 
 							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
-							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?>>
+							<div class="row row_textarea <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?>>
 								<div class="a"><strong><?php echo $value['title']; ?></strong><div class="help"><?php echo $value['help']; ?></div></div>
 								<div class="<?php echo $side_two; ?>">
-									<textarea name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" style="width:100%;height:150px;" <?php if(isset($value['placeholder'])){ echo "placeholder='{$value['placeholder']}'"; } ?>><?php echo $options_theme[ $value['name'] ] ?></textarea>
+									<textarea name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" style="width:100%;height:150px;" <?php if(isset($value['placeholder'])){ echo "placeholder='{$value['placeholder']}'"; } ?> <?php if( isset($value['maxlength']) && $value['maxlength'] ): ?>onKeyDown="IF_textCounter(this,'<?php echo $value['id'] ?>_text_length',<?php echo (int)$value['maxlength']; ?>);" onKeyUp="IF_textCounter(this,'<?php echo $value['id'] ?>_text_length' ,<?php echo (int)$value['maxlength']; ?>)"<?php endif; ?> ><?php if( isset($options_theme[ $value['name'] ]) ){ echo $options_theme[ $value['name'] ]; } ?></textarea>
+									<?php if( isset($value['maxlength']) && $value['maxlength'] ): ?>
+									<input type="text" disabled="disabled" readonly="readonly" id="<?php echo $value['id'] ?>_text_length" class="text_length" value="<?php echo (int)$value['maxlength']; ?>" />
+								<?php endif; ?>
 								</div>
 							</div>
 							<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
@@ -1814,14 +1961,15 @@ function fields_update($data,$is_tab = 1){
 
 			}elseif(  $value['type'] == 'background_complete' ){
 
-				$background_complete_array = array();
+				$background_complete_array                = array();
 				$background_complete_array['color']       = isset($_POST["{$value['name']}_color"])?$_POST["{$value['name']}_color"]:'';
 				$background_complete_array['transparent'] = isset($_POST["{$value['name']}_transparent"])?$_POST["{$value['name']}_transparent"]:'';
 				$background_complete_array['repeat']      = isset($_POST["{$value['name']}_repeat"])?$_POST["{$value['name']}_repeat"]:'';
 				$background_complete_array['size']        = isset($_POST["{$value['name']}_size"])?$_POST["{$value['name']}_size"]:'';
 				$background_complete_array['attachment']  = isset($_POST["{$value['name']}_attachment"])?$_POST["{$value['name']}_attachment"]:'';
 				$background_complete_array['position']    = isset($_POST["{$value['name']}_position"])?$_POST["{$value['name']}_position"]:'';
-				$background_complete_array['src']    = isset($_POST["{$value['name']}_src"])?$_POST["{$value['name']}_src"]:'';
+				$background_complete_array['src']         = isset($_POST["{$value['name']}_src"])?$_POST["{$value['name']}_src"]:'';
+				$background_complete_array['opacity']     = isset($_POST["{$value['name']}_opacity"])?$_POST["{$value['name']}_opacity"]:'';
 
 			    //var_dump($background_complete_array);
 				$options_update[$value['name']]    = $background_complete_array; 
@@ -1837,6 +1985,31 @@ function fields_update($data,$is_tab = 1){
 			    //var_dump($background_complete_array);
 				$options_update[$value['name']]    = $color_hover_array; 
 
+			}elseif( $value['type'] == 'select2' && $value['multiple'] ==  true  ){
+
+				// items in post
+				$data_select2_input_hidden = "";
+				$data_select2_input_hidden  = isset($_POST["{$value['name']}_input_hidden"])?$_POST["{$value['name']}_input_hidden"]:'';
+				$data_select2_input_hidden = explode(",", $data_select2_input_hidden);
+
+				$array_get_values_check = array();
+				$array_set_values_check = array();
+		
+				foreach ( $value['items'] as $key2 => $value2 ) $array_get_values_check[] = $key2;
+
+				if ( isset($data_select2_input_hidden) && is_array( $data_select2_input_hidden ) ) {
+
+					foreach ( $data_select2_input_hidden as $key3 => $value3) {
+						if( in_array( $value3 , $array_get_values_check ) ){
+
+							$array_set_values_check[] = $value3;
+						}
+
+					}
+
+				}
+
+				$options_update[$value['name']] = $array_set_values_check;
 
 			}else{
 
@@ -1943,7 +2116,7 @@ function fields_update($data,$is_tab = 1){
         		}
         		if( in_array( 'enhancing_code', $this->components )  ){
         			wp_register_style( 'ilenframework-script-enhancing-code-style', $this->parameter['url_framework'] ."/assets/css/enhancing-code/codemirror.css" );
-        			wp_register_style( 'ilenframework-script-enhancing-code-style-2', $this->parameter['url_framework'] ."/assets/css/enhancing-code/ambiance.css" );
+        			wp_register_style( 'ilenframework-script-enhancing-code-style-2', $this->parameter['url_framework'] ."/assets/css/enhancing-code/xq-light.css" );
         
         			// Enqueue styles
         			wp_enqueue_style(  'ilenframework-script-enhancing-code-style' );
@@ -1951,6 +2124,7 @@ function fields_update($data,$is_tab = 1){
         
         			wp_enqueue_script('ilenframework-script-enhancing-code', $this->parameter['url_framework'] . '/assets/js/enhancing-code/codemirror.js', array( 'jquery' ), '4.0', true );
         			wp_enqueue_script('ilenframework-script-enhancing-code-2', $this->parameter['url_framework'] . '/assets/js/enhancing-code/css.js', array( 'jquery' ), '4.0', true );	
+        			//wp_enqueue_script('ilenframework-script-enhancing-code-3', $this->parameter['url_framework'] . '/assets/js/enhancing-code/htmlmixed.js', array( 'jquery' ), '4.0', true );	
         		}
         		if( in_array( 'list_pattern_bg', $this->components ) ){
         			null;	
@@ -2068,5 +2242,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_1_6;
+$IF = new ilen_framework_1_6_5;
 ?>
