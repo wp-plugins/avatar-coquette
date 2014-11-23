@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 1.5
-Version: 1.8
+Version: 1.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,8 @@ Also each page editor can get your own avartar and can climb on the option 'User
 
 
 == Changelog ==
+= 1.8.1 =
+* Update core <code>iLenFramework 1.7</code>
 = 1.8 =
 * Update core <code>iLenFramework 1.6.6</code>
 = 1.7 =
