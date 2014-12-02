@@ -8,10 +8,11 @@ Author URI:
 Author: iLen
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.5
-Version: 1.8.3
+Stable tag: 1.9
+Version: 1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3VBA8WCYN5ZTS
 
 Change avatar sad wordpress by other coquette
 
@@ -51,6 +52,8 @@ Also each page editor can get your own avartar and can climb on the option 'User
 
 
 == Changelog ==
+= 1.9 =
+Add button 'donate'
 = 1.8.3 =
 * Update core <code>iLenFramework 1.7.3</code>
 = 1.8.1 =
