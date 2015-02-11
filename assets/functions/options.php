@@ -32,19 +32,20 @@ class avatar_coquette_make{
                      'name_option'    =>'avatar_coquette',
                      'name_plugin_url'=>'avatar-coquette',
                      'descripcion'    =>'Change avatar sad wordpress by other coquette',
-                     'version'        =>'1.9',
+                     'version'        =>'2.0',
                      'url'            =>'',
                      'logo'           =>'<i class="fa fa-user text-long" style="padding:15px 18px;"></i>',
                      'logo_text'      =>'', // alt of image
                      'slogan'         =>'', // powered by <a href="">iLenTheme</a>
                      'url_framework'  =>plugins_url()."/avatar-coquette/assets/ilenframework",
                      'theme_imagen'   =>plugins_url()."/avatar-coquette/assets/images",
-                     'twitter'        =>'https://twitter.com/intent/tweet?text=View this awesome plugin WP;url=http://bit.ly/1kN1Yfh&amp;via=iLenElFuerte',
+                     'twitter'        =>'',
                      'wp_review'      =>'https://wordpress.org/plugins/avatar-coquette/',
                      'link_donate'    =>'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3VBA8WCYN5ZTS',
                      'type'           =>'plugin',
                      'method'         =>'free',
-                     'themeadmin'     =>'fresh');
+                     'themeadmin'     =>'fresh',
+                     'scripts_admin'  =>array( 'page' => array('avatar_coquette' => array('jquery_ui_reset')), ));
     }
 
     function getOptionsPlugin(){

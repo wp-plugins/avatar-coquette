@@ -6,10 +6,10 @@ Plugin URI: https://wordpress.org/plugins/avatar-coquette/
 Tags: avatar,Change avatar Wordpress, Change my avatar in wordpress, avartar custom in wordpress, comment change avartar plugin, custom avatar wordpress, plugin comments, wordpress new avatar, wordpress plugin,seo,comments,addon comments, avatar comments,avatar wp,avatar comment
 Author URI: 
 Author: iLen
-Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.9
-Version: 1.9
+Requires at least: 3.5
+Tested up to: 4.1
+Stable tag: 2.0
+Version: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3VBA8WCYN5ZTS
@@ -52,6 +52,8 @@ Also each page editor can get your own avartar and can climb on the option 'User
 
 
 == Changelog ==
+= 2.0 =
+* Update core <code>iLenFramework 2.0</code>
 = 1.9 =
 Add button 'donate'
 = 1.8.3 =

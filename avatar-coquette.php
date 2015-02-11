@@ -4,7 +4,7 @@ Plugin Name: Avatar Coquette
 Plugin URI:
 Description: avatar,Change avatar sad wordpress by other coquette
 Tags: Change avatar Wordpress, Change my avatar in wordpress, avartar custom in wordpress, comment change avartar plugin, custom avatar wordpress, plugin comments, wordpress new avatar, wordpress plugin,seo,comments,addon comments, avatar comments,avatar wp,avatar comment
-Version: 1.9
+Version: 2.0
 Author: iLen
 Author URI:
 */
