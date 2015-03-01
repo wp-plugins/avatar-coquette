@@ -8,8 +8,8 @@ Author URI:
 Author: iLen
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 2.0
-Version: 2.0
+Stable tag: 2.1
+Version: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3VBA8WCYN5ZTS
@@ -52,6 +52,8 @@ Also each page editor can get your own avartar and can climb on the option 'User
 
 
 == Changelog ==
+= 2.1 =
+* Update core <code>iLenFramework 2.0</code> minus fixed
 = 2.0 =
 * Update core <code>iLenFramework 2.0</code>
 = 1.9 =
