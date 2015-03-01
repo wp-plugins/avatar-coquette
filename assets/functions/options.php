@@ -32,7 +32,7 @@ class avatar_coquette_make{
                      'name_option'    =>'avatar_coquette',
                      'name_plugin_url'=>'avatar-coquette',
                      'descripcion'    =>'Change avatar sad wordpress by other coquette',
-                     'version'        =>'2.1',
+                     'version'        =>'2.2',
                      'url'            =>'',
                      'logo'           =>'<i class="fa fa-user text-long" style="padding:15px 18px;"></i>',
                      'logo_text'      =>'', // alt of image
@@ -42,6 +42,7 @@ class avatar_coquette_make{
                      'twitter'        =>'',
                      'wp_review'      =>'https://wordpress.org/plugins/avatar-coquette/',
                      'link_donate'    =>'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3VBA8WCYN5ZTS',
+                     'wp_support'     =>'http://support.ilentheme.com/forums/forum/plugins/avatar-coquette/',
                      'type'           =>'plugin',
                      'method'         =>'free',
                      'themeadmin'     =>'fresh',
