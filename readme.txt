@@ -17,6 +17,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Change avatar sad wordpress by other coquette
 
 == Description ==
+<blockquote>
+  <p>Support for this plugin will only be served <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
+</blockquote>
 With <strong>Avatar Coquette</strong> you can replace the default avatar sad wordpress for a flirty new avatars. 
 Because you can choose <i>2 criteria</i> for the same show. <br />
 <ul>
