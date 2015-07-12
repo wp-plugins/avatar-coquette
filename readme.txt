@@ -7,9 +7,9 @@ Tags: avatar,Change avatar Wordpress, Change my avatar in wordpress, avartar cus
 Author URI: 
 Author: iLen
 Requires at least: 3.5
-Tested up to: 4.2.1
-Stable tag: 2.6
-Version: 2.6
+Tested up to: 4.2.2
+Stable tag: 2.7
+Version: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3VBA8WCYN5ZTS
@@ -55,6 +55,8 @@ Also each page editor can get your own avartar and can climb on the option 'User
 
 
 == Changelog ==
+= 2.7 =
+* Update core <code>iLenFramework 2.5.4</code>
 = 2.6 =
 * Update core <code>iLenFramework 2.5</code>
 = 2.5 =
